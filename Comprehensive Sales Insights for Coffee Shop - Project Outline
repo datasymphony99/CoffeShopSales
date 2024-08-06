@@ -1,0 +1,54 @@
+Coffee Shop Sales
+This project involves a detailed dashboard that delivers valuable insights for a coffee shop sales. Key features include analysis of total sales, orders, and quantities sold. The dashboard will have charts like a calendar heat map, weekday/weekend sales, store location comparisons, daily trends with averages, product category performance, top 10 products by sales, and hourly/daily sales patterns. These insights will support data-driven decisions and highlight sales trends.
+
+Problem Statement
+
+Total Sales Analysis:
+⦁	Compute the total sales for each month.
+⦁	Assess the month-over-month sales increase or decrease.
+⦁	Compare sales between the chosen month and the preceding month.
+
+Total Order Analysis:
+⦁	Determine the total number of orders for each month.
+⦁	Analyze the month-over-month change in the number of orders.
+⦁	Evaluate the difference in order numbers between the chosen month and the previous month.
+
+Total Quantity Sold Analysis:
+⦁	Measure the total quantity sold each month.
+⦁	Investigate the month-over-month change in the total quantity sold.
+⦁	Calculate the difference in quantities sold between the chosen month and the preceding month.
+
+
+Chart Requirements:
+
+Calendar Heat Map:
+⦁	Create a calendar heat map that updates dynamically based on the selected month from a slicer.
+⦁	Color-code each day on the calendar to reflect sales volume, with darker shades indicating higher sales.
+⦁	Add tooltips to show detailed metrics when hovering over specific days.
+
+Sales Analysis by Weekdays and Weekends:
+⦁	Divide sales data into weekdays and weekends
+⦁	to analyze performance differences.
+⦁	Offer insights into whether sales patterns vary between weekdays and weekends.
+
+Sales Analysis by Store Location:
+⦁	Display sales data across different store locations.
+⦁	Include month-over-month (MoM) difference metrics based on the selected month in the slicer.
+⦁	Highlight MoM sales increases or decreases for each store location to spot trends.
+
+Daily Sales Analysis with Average Line
+⦁	Present daily sales for the selected month using a line chart.
+⦁	Add an average line to indicate the average daily sales.
+⦁	Emphasize bars that surpass or fall short of the average sales to pinpoint standout sales days.
+
+Sales Analysis by Product Category
+⦁	Evaluate sales performance across various product categories.
+⦁	Offer insights into which product categories contribute most to overall sales.
+
+Top 10 Products by Sales
+⦁	Identify and showcase the top 10 products based on sales volume.
+⦁	Enable users to visualize the highest performing products in terms of sales easily.
+
+Sales Analysis by Days and Hours
+⦁	Use a heat map to display sales patterns across different days and hours.
+⦁	Include tooltips that provide detailed metrics (sales, orders, quantity) when hovering over specific day-hour slots.
