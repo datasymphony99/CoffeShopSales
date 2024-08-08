@@ -1,3 +1,4 @@
+
 Project Overview
 
 In this Power BI project, the focus is on examining sales data for a coffee shop. The goal is to build a detailed dashboard that delivers valuable insights into different dimensions of sales performance, including overall sales, order analysis, sales trends by time and location, and product performance.
@@ -26,6 +27,7 @@ Tools Used
 
 
 Data Cleaning and Analysis
+
 Data Cleaning
 Excel Tasks
 ⦁	Data Type Correction: Ensured numeric columns (e.g., sales amount, quantity sold, order ID) were assigned the correct numeric data types.
@@ -55,6 +57,7 @@ Utilized MySQL and DAX to create measures and calculations for:
 ⦁	Sales patterns by days and hours
 
 Power BI Visualizations
+
 ⦁	Total Sales Analysis: Card and line charts were used to visualize total sales over various time periods.
 ⦁	Total Order Analysis: Displayed the number of orders over different time periods using card and line charts.
 ⦁	Total Quantity Sold Analysis: Represented the total quantity of products sold using card and line charts.
@@ -185,7 +188,7 @@ Daily Average Sales:
 Daily Average Sales = AVERAGEX(ALLSELECTED('Transactions'[transaction_date]), [Total Sales])
 
 Color for Bars:
-Colour For Bars = IF([Total Sales] > [Daily Avg Sales], "Above Average", "Below Average")
+Color For Bars = IF([Total Sales] > [Daily Avg Sales], "Above Average", "Below Average")
 
 Sales by Product Category
 Label for Product Category:
@@ -224,6 +227,16 @@ Based on the analysis, the following insights and recommendations were derived:
 Conclusion
 The Coffee Shop Sales Analysis dashboard delivers crucial insights into sales trends and performance across various dimensions. By leveraging this comprehensive analysis, the coffee shop can refine its product mix, enhance location-specific strategies, and optimize marketing efforts based on time-based sales patterns. Understanding these metrics empowers the business to make informed decisions, ultimately leading to improved sales and customer satisfaction.
 
+
+
+
+
+
+
+
+
+
+```
 
 
 
