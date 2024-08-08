@@ -1,9 +1,12 @@
 
 Project Overview
 
+
 In this Power BI project, the focus is on examining sales data for a coffee shop. The goal is to build a detailed dashboard that delivers valuable insights into different dimensions of sales performance, including overall sales, order analysis, sales trends by time and location, and product performance.
 
+
 Problem Statement
+
 The coffee shop faces challenges in comprehending its sales performance. Key areas of analysis include:
 ⦁	Total Sales Review
 ⦁	Total Order Evaluation
@@ -16,11 +19,14 @@ The coffee shop faces challenges in comprehending its sales performance. Key are
 ⦁	Sales Patterns by Days and Hours
 The objective is to analyze these aspects to identify key sales drivers and pinpoint improvement areas.
 
+
 Data Sources
+
 MySQL Database: Stores sales data with columns such as date, product, location, sales amount, quantity sold, order ID, and more.
 Excel Files: Utilized for supplementary data preparation and cleaning tasks.
 
 Tools Used
+
 ⦁	MySQL: For storing and querying sales data.
 ⦁	Excel: For initial data cleaning and preparation.
 ⦁	Power BI: For data visualization and exploratory data analysis (EDA).
@@ -29,13 +35,16 @@ Tools Used
 Data Cleaning and Analysis
 
 Data Cleaning
+
 Excel Tasks
+
 ⦁	Data Type Correction: Ensured numeric columns (e.g., sales amount, quantity sold, order ID) were assigned the correct numeric data types.
 ⦁	Null Value Handling: Applied techniques like filling with mean/median for numeric fields.
 ⦁	Cell Formatting: Applied correct formatting for columns, including setting number formats with the correct decimal places.
 ⦁	Missing Value Management: Used Excel functions to fill or remove missing data.
 ⦁	Consistent Labeling: Standardized labeling for product and location categories.
 ⦁	Date Format Standardization: Converted date columns to a consistent format using Excel functions.
+
 
 Power BI Tasks
 
@@ -82,36 +91,49 @@ Exploratory Data Analysis (EDA)
 ⦁	How does sales performance vary by days and hours?
 
 DAX Queries Used
+
 Date/Calendar Table
+
 Creating Date Table:
+
 Date Table = CALENDAR(MIN(Transactions[transaction_date]), MAX(Transactions[transaction_date]))
 
 Extracting Month:
+
 Month = FORMAT('Date Table'[Date], "mmm")
 
 Month Number:
+
 Month Number = MONTH('Date Table'[Date])
 
 Month Year:
+
 Month Year = FORMAT('Date Table'[Date], "mmm yyyy")
 
 Total Sales Analysis KPI
+
 Adding Sales Column:
+
 Sales = Transactions[unit_price] * Transactions[transaction_qty]
 
 Total Sales Measure:
+
 Total Sales = SUM(Transactions[Sales])
 
 Month-on-Month (MoM) Analysis
+
 Current Month Sales:
+
 Current Month Sales = VAR selected_month = SELECTEDVALUE('Date Table'[Month]) 
 			RETURN 
 			TOTALMTD(CALCULATE([Total Sales],'DateTable'[Month=selected_month), 'Date Table'[Date])
 					
 Previous Month Sales:
+
 Previous Month Sales = CALCULATE([Current Month Sales], DATEADD('Date Table'[Date], -1, MONTH))
 
 MoM Growth and Difference:
+
 MoM Growth & Diff Sales = 
         VAR month_diff = [Current Month Sales] - [Previous Month Sales]
         VAR MoM = ([Current Month Sales] - [Previous Month Sales] ) / [Previous Month Sales]
@@ -123,14 +145,17 @@ MoM Growth & Diff Sales =
 Total Orders Analysis
 
 Current Month Orders:
+
 Current Month Orders = Var selected_month = SELECTEDVALUE(DateTable[Month])   
                       RETURN
                       TOTALMTD(CALCULATE([Total Orders] , 'DateTable'[Month] = selected_month) , 'DateTable'[Date])
 
 Previous Month Orders:
+
 Previous Month Orders = CALCULATE([Current Month Orders] , DATEADD('DateTable'[Date], -1, MONTH))
 
 MoM Growth and Difference for Orders:
+
 MoM Growth & Diff Orders = 
         VAR month_diff = [Current Month Orders] - [Previous Month Orders]
         VAR MoM = ([Current Month Orders] - [Previous Month Orders] ) / [Previous Month Orders]
@@ -142,17 +167,21 @@ MoM Growth & Diff Orders =
 Total Quantity Sold Analysis
 
 Total Quantity:
+
 Total Quantity Sold = SUM(Transactions[transaction_qty])
 
 Current Month Quantity:
+
 Current Month Quantity = Var selected_month = SELECTEDVALUE(DateTable[Month])   
                       RETURN
                       TOTALMTD(CALCULATE([Total Quantity Sold] , 'DateTable'[Month] = selected_month) , 'DateTable'[Date])
 
 Previous Month Quantity:
+
 Previous Month Quantity = CALCULATE([Current Month Quantity] , DATEADD('DateTable'[Date], -1, MONTH))
 
 MoM Growth and Difference for Quantity:
+
 MoM Growth & Diff Quantity = 
         VAR month_diff = [Current Month Quantity] - [Previous Month Quantity]
         VAR MoM = ([Current Month Quantity] - [Previous Month Quantity] ) / [Previous Month Quantity]
@@ -164,37 +193,50 @@ MoM Growth & Diff Quantity =
 Calendar Heat Map
 
 Day Name:
+
 Day Name = FORMAT('DateTable'[Date], "ddd")
 
 Week Number:
+
 Week Number = WEEKNUM('Date Table'[Date], 2)
 
 Day Number:
+
 Day Number = FORMAT('Date Table'[Date], "D")
 
 Week Day Number:
+
 Week Day Number = WEEKDAY('Date Table'[Date], 2)
 
 Sales Analysis by Store Location:
 
+
 Placeholder for Zero Values:
+
 Placeholder = 0
 	
 Label for Store Location:
+
 Label For Store Location = SELECTEDVALUE(Transactions[store_location]) & " | " & FORMAT([Total Sales]/1000, "$0.00K")
 
 Daily Sales Analysis with Average Line
+
 Daily Average Sales:
+
 Daily Average Sales = AVERAGEX(ALLSELECTED('Transactions'[transaction_date]), [Total Sales])
 
 Color for Bars:
+
 Color For Bars = IF([Total Sales] > [Daily Avg Sales], "Above Average", "Below Average")
 
 Sales by Product Category
+
 Label for Product Category:
+
 Label for Product Category = SELECTEDVALUE(Transactions[product_category]) & " | " & FORMAT([Total Sales]/1000, "$0.00k")
 
 MoM Label:
+
 New Mom Label =
         VAR month_diff = [Current Month Sales] - [Previous Month Sales]
         VAR MoM = ([Current Month Sales] - [Previous Month Sales] ) / [Previous Month Sales]
@@ -206,18 +248,23 @@ New Mom Label =
 Sales by Product Type
 
 Label for Product Type:
+
 Label For Product Type = SELECTEDVALUE(Transactions[product_type]) & " | " & FORMAT([Total Sales]/1000, "$0.00K")
 
 Sales by Days and Hours
+
 Extracting Hour from Transaction Time:
 Hour = HOUR(Transactions[transaction_time])
 
 ToolTip for Hour:
+
 TT for Hour = "Hour No:" & " " & FORMAT(AVERAGE(Transactions[Hour]), 0)
 
 
 Recommendations
+
 Based on the analysis, the following insights and recommendations were derived:
+
 ⦁	Optimize Product Mix: Focus on high-performing products and consider phasing out or improving low-performing products.
 ⦁	Enhance Location Performance: Identify locations with lower sales and analyze factors contributing to underperformance. Implement targeted strategies to boost sales in these locations.
 ⦁	Weekday vs. Weekend Promotions: Leverage sales patterns to design promotions and marketing campaigns tailored for weekdays and weekends.
@@ -225,6 +272,7 @@ Based on the analysis, the following insights and recommendations were derived:
 ⦁	Customer Preferences: Use product sales data to understand customer preferences and tailor offerings accordingly.
 
 Conclusion
+
 The Coffee Shop Sales Analysis dashboard delivers crucial insights into sales trends and performance across various dimensions. By leveraging this comprehensive analysis, the coffee shop can refine its product mix, enhance location-specific strategies, and optimize marketing efforts based on time-based sales patterns. Understanding these metrics empowers the business to make informed decisions, ultimately leading to improved sales and customer satisfaction.
 
 
