@@ -1,4 +1,5 @@
 Project Overview
+
 In this Power BI project, the focus is on examining sales data for a coffee shop. The goal is to build a detailed dashboard that delivers valuable insights into different dimensions of sales performance, including overall sales, order analysis, sales trends by time and location, and product performance.
 
 Problem Statement
