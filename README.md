@@ -28,7 +28,9 @@ Excel Files: Utilized for supplementary data preparation and cleaning tasks.
 Tools Used
 
 ⦁	MySQL: For storing and querying sales data.
+
 ⦁	Excel: For initial data cleaning and preparation.
+
 ⦁	Power BI: For data visualization and exploratory data analysis (EDA).
 
 
